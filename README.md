@@ -47,6 +47,13 @@ This extension contributes the following settings (可以在设置中搜索 `eas
 
 - The translation quality depends on the free MyMemory API. Long or highly technical sentences might need manual adjustment. (翻译质量依赖于免费的 MyMemory API。对于过长或高度专业的词汇可能需要微调)
 
+## Feedback and Bug Reports (意见反馈与报错)
+
+If you encounter any issues, bugs, or have feature requests, please feel free to open an issue on GitHub:
+如果您在使用过程中遇到任何问题、报错，或者有新的功能建议，欢迎在 GitHub 上提出 Issue：
+
+👉 [Submit an Issue (提交报错/反馈)](https://github.com/BZSH2/easyName/issues)
+
 ## Release Notes (版本记录)
 
 See [CHANGELOG.md](changelog.md) for details.
