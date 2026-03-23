@@ -1,0 +1,117 @@
+{
+  "name": "easyname",
+  "displayName": "easyName",
+  "version": "0.1.0",
+  "publisher": "easyName",
+  "description": "VS Code extension scaffolded with Vite and pnpm",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:easyName.main"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "easyName.main",
+        "title": "easyName: 中文转小驼峰命名"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "easyName.main",
+        "key": "ctrl+alt+.",
+        "mac": "cmd+alt+.",
+        "when": "editorTextFocus && editorHasSelection"
+      }
+    ],
+    "configuration": {
+      "title": "easyName",
+      "properties": {
+        "easyName.translate.endpoint": {
+          "type": "string",
+          "default": "https://api.mymemory.translated.net/get",
+          "description": "翻译接口地址"
+        },
+        "easyName.translate.sourceLang": {
+          "type": "string",
+          "default": "zh-CN",
+          "description": "源语言代码"
+        },
+        "easyName.translate.targetLang": {
+          "type": "string",
+          "default": "en-US",
+          "description": "目标语言代码"
+        },
+        "easyName.translate.timeoutMs": {
+          "type": "number",
+          "default": 8000,
+          "minimum": 1000,
+          "description": "翻译请求超时时间(毫秒)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "vite build --mode development",
+    "watch": "vite build --watch --mode development",
+    "package": "vite build --mode production",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "pnpm run lint:js && pnpm run lint:ts",
+    "lint:js": "eslint . --ext .js,.cjs,.mjs --max-warnings=0",
+    "lint:ts": "eslint . --ext .ts --max-warnings=0",
+    "lint:fix": "eslint . --ext .js,.cjs,.mjs,.ts --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "validate": "pnpm run lint && pnpm run typecheck && pnpm run format:check",
+    "pub:guard": "node scripts/pub-guard.cjs",
+    "release": "standard-version",
+    "pub": "pnpm run pub:guard && pnpm run validate && pnpm run release && git push --follow-tags origin HEAD",
+    "commit": "cz",
+    "commitlint": "commitlint --from=HEAD~1 --to=HEAD --verbose",
+    "prepare": "simple-git-hooks"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm run lint && pnpm exec lint-staged",
+    "commit-msg": "pnpm exec commitlint --edit $1",
+    "pre-push": "pnpm run validate"
+  },
+  "lint-staged": {
+    "*.{js,cjs,mjs,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@types/node": "^20.17.57",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "lint-staged": "^15.5.0",
+    "prettier": "^3.5.3",
+    "simple-git-hooks": "^2.13.0",
+    "standard-version": "^9.5.0",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.15"
+  },
+  "packageManager": "pnpm@10.10.0"
+}

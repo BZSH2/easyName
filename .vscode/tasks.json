@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "pnpm: watch",
+      "type": "shell",
+      "command": "pnpm run watch",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "vite",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*building for.*",
+          "endsPattern": ".*watching for file changes.*"
+        },
+        "pattern": {
+          "regexp": "^(?!.*)$"
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "pnpm: compile",
+      "type": "shell",
+      "command": "pnpm run compile",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
