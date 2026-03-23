@@ -157,10 +157,12 @@ function toKebabCase(input: string): string {
 }
 
 function toWords(input: string): string[] {
+  // MyMemory API 有时候会返回带标点符号的结果，或者本身包含大写字母（如 'Get User Info'）
   const normalized = input
-    .replace(/[_-]+/g, ' ')
-    .replace(/[^a-zA-Z0-9\s]/g, ' ')
-    .replace(/\s+/g, ' ')
+    .replace(/[_-]+/g, ' ') // 连字符转空格
+    .replace(/([a-z])([A-Z])/g, '$1 $2') // 处理原本就是驼峰的情况，将其拆开
+    .replace(/[^a-zA-Z0-9\s]/g, ' ') // 移除非字母数字的字符
+    .replace(/\s+/g, ' ') // 合并多个空格
     .trim()
     .toLowerCase();
   if (!normalized) {

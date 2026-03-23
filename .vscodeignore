@@ -7,3 +7,10 @@ commitlint.config.cjs
 .eslintrc.cjs
 **/*.map
 **/*.ts
+pnpm-lock.yaml
+.github/**
+scripts/**
+tsconfig.json
+release-please-config.json
+.release-please-manifest.json
+vite.config.ts
