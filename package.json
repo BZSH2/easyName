@@ -1,7 +1,7 @@
 {
   "name": "easyname",
   "displayName": "easyName",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "publisher": "easyName",
   "description": "VS Code extension scaffolded with Vite and pnpm",
   "icon": "image.png",
