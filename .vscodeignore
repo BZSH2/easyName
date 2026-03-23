@@ -2,6 +2,7 @@
 .vscode-test/**
 node_modules/**
 src/**
+!src/assets/**
 .gitignore
 commitlint.config.cjs
 .eslintrc.cjs
