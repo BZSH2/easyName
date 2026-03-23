@@ -27,6 +27,8 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      HAS_EASYNAMETOKEN: ${{ secrets.EASYNAMETOKEN != '' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -66,7 +68,7 @@ jobs:
       - name: Publish to Open VSX
         if: |
           (github.event_name == 'workflow_dispatch' && inputs.publishToOpenVsx) ||
-          (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && secrets.EASYNAMETOKEN != '')
+          (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && env.HAS_EASYNAMETOKEN == 'true')
         env:
           OVSX_PAT: ${{ secrets.EASYNAMETOKEN }}
         run: pnpm dlx ovsx publish -p "$OVSX_PAT"
